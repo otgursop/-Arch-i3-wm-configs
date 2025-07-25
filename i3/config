@@ -1,0 +1,191 @@
+### Set modifier ###
+set $super Mod4
+set $alt Mod1
+
+### Keyboard layout change ###
+exec_always --no-startup-id setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle
+
+### Set font ###
+font pango:MesloLGM Nerd Font 11
+
+### Use mouse+$super to drag floating windows to their wanted position ###
+floating_modifier $super
+
+### Autostart ###
+
+# Autostrart wallpapers
+exec --no-startup-id feh --bg-scale ~/.local/share/wallpapers/wallpaper7.jpg
+
+# Autostart picom (compositor)
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+
+# Autostart dunst (notify deamon)
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
+# Autostart polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# Autostart applets
+exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id nm-applet
+
+### Start programs binds ###
+# Start a terminal
+bindsym $super+q exec --no-startup-id kitty
+
+# Start rofi/dmenu
+bindsym $super+d exec --no-startup-id dmenu_run -b -p ">>" -sb "#b56419" -nf "#C5C8C6" -nb "#1d1e21" -fn "MesloLGM Nerd Font:style=Bold:size=11"
+
+### Common apps keybinds ###
+bindsym Print exec --no-startup-id "flameshot gui"
+bindsym $super+l exec --no-startup-id "i3lock -c 000000 -f -e -i ~/.local/share/wallpapers/i3lock/i3lock2.png"
+bindsym $super+b exec --no-startup-id firefox
+bindsym $super+e exec --no-startup-id thunar
+
+### Change volume and brightness ###
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+### Kill focused window ###
+bindsym $super+Shift+q kill
+bindsym $alt+F4 kill
+
+### Change focus ###
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+### Move focused window ###
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+### Split in horizontal or vertical orientation ###
+bindsym $super+h split h
+bindsym $super+v split v
+
+bindsym $super+x split toggle
+
+### Change split direction for already opened windows ###
+bindsym $super+s layout toggle split
+
+### Enter fullscreen mode for the focused container ###
+bindsym $super+Shift+f fullscreen toggle
+
+### Toggle tiling / floating ###
+bindsym $super+f floating toggle
+
+### Change focus between tiling / floating windows ###
+bindsym $super+Shift+space focus mode_toggle
+
+### Workspaces ###
+bindsym $super+Control+Right workspace next
+bindsym $super+Control+Left workspace prev
+
+bindsym $super+1 workspace 1
+bindsym $super+2 workspace 2
+bindsym $super+3 workspace 3
+bindsym $super+4 workspace 4
+bindsym $super+5 workspace 5
+bindsym $super+6 workspace 6
+bindsym $super+7 workspace 7
+bindsym $super+8 workspace 8
+bindsym $super+9 workspace 9
+bindsym $super+0 workspace 10
+
+# Move focused container to workspace
+bindsym $super+Shift+1 move container to workspace 1
+bindsym $super+Shift+2 move container to workspace 2
+bindsym $super+Shift+3 move container to workspace 3
+bindsym $super+Shift+4 move container to workspace 4
+bindsym $super+Shift+5 move container to workspace 5
+bindsym $super+Shift+6 move container to workspace 6
+bindsym $super+Shift+7 move container to workspace 7
+bindsym $super+Shift+8 move container to workspace 8
+bindsym $super+Shift+9 move container to workspace 9
+bindsym $super+Shift+0 move container to workspace 10
+
+### Restart i3 ###
+bindsym $super+Shift+r exec "i3-msg restart"
+
+### Exit i3 ###
+bindsym $super+q+w exec "i3-nagbar -t warning -m 'Really, exit?' \
+-b 'Yes' 'i3-msg exit'"
+
+### Resize window ###
+mode "resize" {
+	bindsym Left resize shrink width 5 px or 5 ppt
+	bindsym Down resize grow height 5 px or 5 ppt
+	bindsym Up resize shrink height 5 px or 5 ppt
+	bindsym Right resize grow width 5 px or 5 ppt
+	bindsym Return mode "default"
+	}
+bindsym $super+r mode "resize"
+
+### Panel (polybar autostart) ###
+#bar {
+#	status_command polybar
+#	position top
+#	workspace_min_width 24
+#	padding 2px 8px 2px 8px
+#	strip_workspace_numbers yes
+#	tray_padding 5
+#
+#	colors {
+#	background #212121
+#	statusline #f0f0f0
+#	separator #f0f0f0
+#
+#	# colour of border, background, and text
+#	focused_workspace #141c21 #c7c7c7 #000000
+#	active_workspace #212121 #212121 #f0f0f0
+#	inactive_workspace #212121 #212121 #f0f0f0
+#	urgent_workspace #141c21 #101210 #f0f0f0
+#	}
+#}
+
+### Window Color Scheme ###
+# Format: client.<state>  border  background  text  indicator  child_border
+
+# Active focused window
+client.focused          #c9741e #402e26 #93a1a1 #a8601e #a8601e
+
+# Focused inactive
+client.focused_inactive #362b20 #b08500 #93a1a1 #61291D #61291D
+
+# Unfocused windows
+client.unfocused        #362b20 #b08500 #93a1a1 #47301b #47301b
+
+# Urgent windows
+client.urgent           #362b20 #b08500 #93a1a1 #263640 #61291D
+
+# Placeholder
+client.placeholder       #362b20 #b08500 #93a1a1 #263640 #61291D
+
+# Background
+client.background        #362b20
+
+
+### Window rules, you can find the window class using xprop ###
+for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver|ark|obs] floating enable
+for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver|ark|Blueman-manager] focus
+
+for_window [class="Blueman-manager"] floating enable, resize set width 70 ppt height 40 ppt # For bluetooth
+for_window [class="feh"] floating enable, resize set width 120 ppt height 60 ppt # For feh
+
+for_window [class="obsidian"] floating disable
+
+for_window [class=".*"] border pixel 2
+
+# Margins from other windows
+gaps inner 2
+gaps outer 0
+
+# Gaps rules
+#smart_gaps on
+#hide_edge_borders smart
