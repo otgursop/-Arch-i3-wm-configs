@@ -1,0 +1,32 @@
+# Шрифт и размер
+font:
+  normal:
+    family: "MesloLGM Nerd Font"
+    style: Regular
+  size: 9.0
+
+# Цветовая схема
+colors:
+  primary:
+    background: '#1c1c1c'
+    foreground: '#cdd6f4'
+
+# Прозрачность (для композиторов)
+window:
+  opacity: 1
+
+# Прокрутка
+scrolling:
+  history: 10000
+  multiplier: 3
+
+# Курсор
+cursor:
+  style: Beam
+  blinking: On
+
+# Вкладки (требует tmux или подобное)
+shell:
+  program: /bin/zsh
+  args:
+    - --login

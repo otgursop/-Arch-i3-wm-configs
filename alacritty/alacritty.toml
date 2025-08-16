@@ -1,0 +1,26 @@
+[colors.primary]
+background = "#191816"
+foreground = "#dddddd"
+
+[cursor]
+style = "Beam"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Medium"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[terminal.shell]
+args = ["--login"]
+program = "/bin/zsh"
+
+[window]
+opacity = 1
+
+[terminal]
