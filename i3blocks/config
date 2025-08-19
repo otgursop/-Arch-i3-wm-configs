@@ -10,42 +10,56 @@
 separator=true
 separator_block_width=15
 
-[home_usage]
-color=#ff5454
-command=echo "HOME: $(df -h ~ | awk 'NR==2 {print $5}')"
-interval=30 
-
 [doc]
-full_text=DOC
+full_text=doc
+font=FiraCode Nerd Font Mono
 website=https://vivien.github.io/i3blocks
 command=xdg-open "$website"
 color=#f12711
 
+[home_usage]
+color=#ff5454
+font=FiraCode Nerd Font Mono
+command=echo "HOME: $(df -h ~ | awk 'NR==2 {print $5}')"
+interval=30 
+
 [keyboard]
 color=#c9741e
+font=FiraCode Nerd Font Mono
 command=xkb-switch -p
 interval=1
 
 [memory]
 color=#f5af19
+font=FiraCode Nerd Font Mono
 command=free -h | awk '/^Mem/ {print $3 " / " $2}'
 interval=2
 
 [ram]
 color=#c45453
+font=FiraCode Nerd Font 10
 command=echo "RAM: $(free | grep Mem | awk '{printf "%.1f%", $3/$2 * 100}')"
 interval=2
 
 [cpu]
 color=#3ad188
+font=FiraCode Nerd Font 10
 command=echo "CPU: $(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8"%"}')"
 interval=2
 
 [volume]
 color=#f00000
+font=FiraCode Nerd Font 10
 command=~/.config/i3blocks/scripts/volume.sh
 interval=1
 
+[ip]
+color=#c9741e
+font=FiraCode Nerd Font 10
+command=ip -4 addr show enp2s0 | grep -oP '(?<=inet\s)\d+\.\d+\.\d+\.\d+' | head -n 1 | awk '{print "IP: " $1}'
+interval=5
+
 [time]
+font=FiraCode Nerd Font 10
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=1
