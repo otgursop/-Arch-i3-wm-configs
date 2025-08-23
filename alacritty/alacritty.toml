@@ -6,11 +6,11 @@ foreground = "#dddddd"
 style = "Beam"
 
 [font]
-size = 10.0
+size = 10.97
 
-[font.normal]
-family = "FiraCode Nerd Font Mono"
-style = "Medium"
+normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Italic" }
+bold = { family = "JetBrainsMonoNL Nerd Font Mono", style = "ExtraBold" }
 
 [scrolling]
 history = 10000
@@ -18,9 +18,9 @@ multiplier = 3
 
 [terminal.shell]
 args = ["--login"]
-program = "/bin/zsh"
+program = "/bin/bash"
 
 [window]
 opacity = 1
-
-[terminal]
+decorations = "None"
+dynamic_padding = true
